@@ -1,24 +1,51 @@
+const { log } = require('console');
 const fs =require('fs');
 
-
-
-//const arr = ar.split('').slice(0,81)
-// console.log(arr)
-function read(Nikita) {
-  
-const num = fs.readFileSync('./puzzles.txt','utf-8').split('\r\n').map((el)=> el.split(','));
-return num[Nikita]
-  // const z = 
-  //  for(let i = 0; i < 15; i++){
-  //   for(let z = 0; z < 9; z++){
-  //   }
-  //  }
+const read = (Nikita) => {
+const num = fs.readFileSync('./puzzles.txt','utf-8').split('\r\n')
+return num[Nikita].split('')
 }
-console.log(read(process.argv[2]))
-// function read(num) {
-//   return num.slice('\n');
-//   //const arr = ar.split('').slice(0,81)
+// console.log(read(process.argv[2]))
+// function func(tab){
+// const res = [];
+// for (let i = 0; i < 9; i++){
+//   const arrItem = [];
+//   for (let j = 0; j < 9; j++) {
+//     const item = tab.pop();
+//     arrItem.push(item)
+//   }
+//   res.push(arrItem)
+//   return res
 // }
+// }
+
+const tab = read(process.argv[2]);
+
+const SIZE = 9;
+
+    const res = tab.reduce(
+        (acc, c) => {
+            const lastIndexOfAcc = acc.length - 1;
+
+            const lastItem = acc[lastIndexOfAcc];
+
+            if (lastItem.length == SIZE) {
+                acc.push([]);
+            }
+
+            const lastItemAfterCheck = acc[acc.length - 1];
+
+            lastItemAfterCheck.push(c);
+
+            return acc;
+        },
+        [[]]
+    );
+
+    console.table(res);
+// console.log(tab);
+// func(tab)
+// console.table();
 
 function solve() {
   /**
