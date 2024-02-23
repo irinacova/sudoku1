@@ -1,25 +1,24 @@
 const fs =require('fs');
-const num = fs.readFileSync('./puzzles.txt','utf-8');
-//const ar = num.slice('\n')
+
+
 
 //const arr = ar.split('').slice(0,81)
 // console.log(arr)
-// function read(arr) {
-//    for(let i = 0; i < 9; i++){
-//     for(let z = 0; i < 9; i++){
-      
-//     }
+function read(Nikita) {
   
- 
-//    }
-
-// }
-function read(num) {
-  return num.slice('\n')
-  /**
-   * Прочесть файл puzzles.txt в кодировке 'utf-8' и вернуть эти данные из функции
-   */
+const num = fs.readFileSync('./puzzles.txt','utf-8').split('\r\n').map((el)=> el.split(','));
+return num[Nikita]
+  // const z = 
+  //  for(let i = 0; i < 15; i++){
+  //   for(let z = 0; z < 9; z++){
+  //   }
+  //  }
 }
+console.log(read(process.argv[2]))
+// function read(num) {
+//   return num.slice('\n');
+//   //const arr = ar.split('').slice(0,81)
+// }
 
 function solve() {
   /**
